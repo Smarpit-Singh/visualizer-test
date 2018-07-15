@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">visualizer-test</string>
+
+    <string name="pref_color_red_value" translatable="false">red</string>
+
+    <string name="pref_color_blue_value" translatable="false">blue</string>
+
+    <string name="pref_color_green_value" translatable="false">green</string>
+</resources>
