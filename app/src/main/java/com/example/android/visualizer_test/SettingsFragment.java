@@ -3,13 +3,14 @@ package com.example.android.visualizer_test;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.preference.CheckBoxPreference;
+import android.support.v7.preference.EditTextPreference;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceScreen;
 
 public class SettingsFragment extends PreferenceFragmentCompat implements
-        SharedPreferences.OnSharedPreferenceChangeListener{
+        SharedPreferences.OnSharedPreferenceChangeListener {
 
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
@@ -53,6 +54,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
     // associated with the value. You can do this by using the findIndexOfValue and getEntries methods
     // of Preference.
     private void setPreferenceSummary(Preference preference, String value) {
+        // COMPLETED (3) Don't forget to add code here to properly set the summary for an EditTextPreference
         if (preference instanceof ListPreference) {
             // For list preferences, figure out the label of the selected value
             ListPreference listPreference = (ListPreference) preference;
@@ -61,10 +63,12 @@ public class SettingsFragment extends PreferenceFragmentCompat implements
                 // Set the summary to that label
                 listPreference.setSummary(listPreference.getEntries()[prefIndex]);
             }
+        } else if (preference instanceof EditTextPreference) {
+            // For EditTextPreferences, set the summary to the value's simple string representation.
+            preference.setSummary(value);
         }
     }
 
-    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
